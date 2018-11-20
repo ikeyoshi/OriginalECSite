@@ -1,4 +1,4 @@
-# OriginalECSitePHP
+# OriginalECSite
 
 独学のPHPで作ってみたECサイトです。<br>
 まだまだ未完成なので、おかしな部分が多々あるかと思います。
