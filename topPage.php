@@ -1,6 +1,5 @@
 <?php
-$rootPath = "";
-include($rootPath.'header.php');
+include($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/header.php');
 ?>
 
 <!DOCTYPE html>
@@ -15,11 +14,9 @@ include($rootPath.'header.php');
 
   <h1>トップページ</h1>
 
-  <a href="./product/productList.php">商品一覧を見る</a>
+  <a href=/index/OriginalECSitePHP/product/productList.php>商品一覧を見る</a>
   <br /><br />
-  <a href="./user/cart.php">カートを見る</a>
-  <br /><br />
-  <a href="./user/myPage.php">マイページ</a>
+  <a href=/index/OriginalECSitePHP/user/cart.php>カートを見る</a>
 
 </body>
 

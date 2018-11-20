@@ -1,8 +1,7 @@
 <?php
-$rootPath = "../";
-include($rootPath.'header.php');
-require_once($rootPath.'common/common.php');
-require_once($rootPath.'class/User.php');
+include($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/common/common.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/class/User.php');
 
 $post = sanitize($_POST);
 
@@ -138,7 +137,7 @@ $loginUser = $user->getUser($user_id, $password);
     $_SESSION['sex'] = $sex;
     $_SESSION['email'] = $email;
   ?>
-  <form method="post" action="createUserComplete.php">
+  <form method="post" action="/index/OriginalECSitePHP/user/createUserComplete.php">
     <input type="submit" value="ＯＫ">
     <input type="button" onclick="history.back()" value="修正"><br />
 

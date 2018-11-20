@@ -1,6 +1,5 @@
 <?php
-$rootPath = "../";
-require_once($rootPath.'common/ConnectDB.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/common/ConnectDB.php');
 
 class User
 {
@@ -18,7 +17,26 @@ class User
     protected $regist_date;
     protected $update_date;
 
-    public function getUser($user_id, $password)
+
+    public function getUser($id)
+    {
+        try {
+            $dbh = new ConnectDB();
+            $sql = 'SELECT * FROM user_info WHERE id=?';
+            $args[] = $id;
+            $stmt = $dbh->exec($sql, $args);
+            $dbh = null;
+
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $user;
+        } catch (Exception $e) {
+            echo 'ただいま障害により大変ご迷惑をお掛けしております。';
+            exit();
+        }
+    }
+
+    public function existUser($user_id, $password)
     {
         try {
             $dbh = new ConnectDB();

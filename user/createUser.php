@@ -1,7 +1,6 @@
 <?php
-$rootPath = "../";
-include($rootPath.'header.php');
-require_once($rootPath.'common/common.php');
+include($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/common/common.php');
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +17,7 @@ require_once($rootPath.'common/common.php');
 
   お客様情報を入力してください。<br />
   <br />
-  <form method="post" action="createUserConfirm.php">
+  <form method="post" action="/index/OriginalECSitePHP/user/createUserConfirm.php">
     ユーザーID<br />
     <input type="text" name="user_id" style="width:200px"><br />
     パスワード<br />

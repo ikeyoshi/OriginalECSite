@@ -1,7 +1,6 @@
 <?php
-$rootPath = "../";
-include($rootPath.'header.php');
-require_once($rootPath.'common/common.php');
+include($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/common/common.php');
 ?>
 
 <!DOCTYPE html>
@@ -9,16 +8,16 @@ require_once($rootPath.'common/common.php');
 
 <head>
   <meta charset="UTF-8">
-  <title>スタッフ登録</title>
+  <title>管理者登録</title>
 </head>
 
 <body>
 
-  <h1>スタッフ登録</h1>
+  <h1>管理者登録</h1>
 
-  スタッフ情報を入力してください。<br />
+  管理者情報を入力してください。<br />
   <br />
-  <form method="post" action="createStaffConfirm.php">
+  <form method="post" action="/index/OriginalECSitePHP/user/createStaffConfirm.php">
     ユーザーID<br />
     <input type="text" name="user_id" style="width:200px"><br />
     パスワード<br />

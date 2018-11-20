@@ -1,20 +1,10 @@
 <?php
-$rootPath = "../";
-include($rootPath.'header.php');
-require_once($rootPath.'common/common.php');
-require_once($rootPath.'common/ConnectDB.php');
+include($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/common/common.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/class/Product.php');
 
-try {
-    $dbh = new ConnectDB();
-    $sql = 'SELECT product_id,product_name,price FROM product_info WHERE 1';
-    $stmt = $dbh->select($sql);
-    $dbh = null;
-
-    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (Exception $e) {
-    echo 'ただいま障害により大変ご迷惑をお掛けしております。';
-    exit();
-}
+$product = new Product();
+$products = $product->getAllProduct();
 ?>
 
 <!DOCTYPE html>
@@ -36,18 +26,22 @@ try {
     </tr>
     <?php foreach ($products as $product): ?>
     <tr>
-      <td><a href="productDetail.php?procode=<?php echo $product['product_id'] ?>">
+      <td>
+        <a href="/index/OriginalECSitePHP/product/productDetail.php?product_id=<?php echo $product['product_id'] ?>">
           <?php echo $product['product_name'] ?>
+        </a>
       </td>
-      <td><a href="productDetail.php?procode=<?php echo $product['product_id'] ?>">
-          <?php echo $product['price'] ?>円</td>
-      </a>
+      <td>
+        <a href="/index/OriginalECSitePHP/product/productDetail.php?product_id=<?php echo $product['product_id'] ?>">
+          <?php echo $product['price'] ?>円
+        </a>
+      </td>
     </tr>
     <?php endforeach; ?>
   </table>
 
   <br /><br />
-  <a href="../topPage.php"> 戻る</a>
+  <a href=/index/OriginalECSitePHP/topPage.php>トップページへ戻る</a>
 
 </body>
 

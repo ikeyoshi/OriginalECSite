@@ -1,6 +1,5 @@
 <?php
-$rootPath = "";
-include('header.php');
+include($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/header.php');
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +16,7 @@ include('header.php');
 
   ユーザーIDとパスワードを入力してください。<br />
   <br />
-  <form method="post" action="loginCheck.php">
+  <form method="post" action="/index/OriginalECSitePHP/loginCheck.php">
     ユーザーID<br />
     <input type="text" name="user_id" style="width:200px"><br />
     パスワード<br />

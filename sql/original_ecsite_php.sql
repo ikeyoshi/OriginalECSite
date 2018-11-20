@@ -24,11 +24,11 @@ default charset=utf8
 ;
 
 insert into user_info values
-(1,"guest","guest","一般","一郎","いっぱん","いちろう",0,"guest@gmail.com",0,0,now(),now()),
-(2,"guest2","guest2","一般","二郎","いっぱん","じろう",0,"guest2@gmail.com",0,0,now(),now()),
-(3,"guest3","guest3","一般","三郎","いっぱん","さぶろう",0,"guest3@gmail.com",0,0,now(),now()),
-(4,"guest4","guest4","一般","四郎","いっぱん","しろう",0,"guest4@gmail.com",0,0,now(),now()),
-(5,"guest5","guest5","一般","五郎","いっぱん","ごろう",0,"guest5@gmail.com",0,0,now(),now()),
+(1,"user","user","一般","一郎","いっぱん","いちろう",0,"user@gmail.com",0,0,now(),now()),
+(2,"user2","user2","一般","二郎","いっぱん","じろう",0,"user2@gmail.com",0,0,now(),now()),
+(3,"user3","user3","一般","三郎","いっぱん","さぶろう",0,"user3@gmail.com",0,0,now(),now()),
+(4,"user4","user4","一般","四郎","いっぱん","しろう",0,"user4@gmail.com",0,0,now(),now()),
+(5,"user5","user5","一般","五郎","いっぱん","ごろう",0,"user5@gmail.com",0,0,now(),now()),
 (6,"admin","admin","管理者","一郎","かんりしゃ","いちろう",0,"admin@gmail.com",1,0,now(),now()),
 (7,"admin2","admin2","管理者","二郎","かんりしゃ","じろう",0,"admin2@gmail.com",1,0,now(),now()),
 (8,"admin3","admin3","管理者","三郎","かんりしゃ","さぶろう",0,"admin3@gmail.com",1,0,now(),now()),
@@ -105,7 +105,7 @@ temp_user_id varchar(16),
 product_id int not null,
 product_count int not null,
 price int not null,
-regist_date datetime not null,
+add_date datetime not null,
 update_date datetime
 )
 default charset=utf8
@@ -141,14 +141,14 @@ update_date datetime
 default charset=utf8
 ;
 insert into destination_info values
-(1,"guest","一般","一郎","いっぱん","いちろう","guest@gmail.com","080-1234-5678","東京",now(),now()),
-(2,"guest2","一般","二郎","いっぱん","じろう","guest2@gmail.com","080-2234-5678","東京2",now(),now()),
-(3,"guest3","一般","三郎","いっぱん","さぶろう","guest3@gmail.com","080-3234-5678","東京3",now(),now()),
-(4,"guest4","一般","四郎","いっぱん","しろう","guest4@gmail.com","080-4234-5678","東京4",now(),now()),
-(5,"guest5","一般","五郎","いっぱん","ごろう","guest5@gmail.com","080-5234-5678","東京5",now(),now()),
-(6,"admin","管理者","一郎","かんりしゃ","いちろう","guest@gmail.com","080-6234-5678","東京6",now(),now()),
-(7,"guest2","管理者","二郎","かんりしゃ","じろう","guest2@gmail.com","080-7234-5678","東京7",now(),now()),
-(8,"guest3","管理者","三郎","かんりしゃ","さぶろう","guest3@gmail.com","080-8234-5678","東京8",now(),now()),
-(9,"guest4","管理者","四郎","かんりしゃ","しろう","guest4@gmail.com","080-9234-5678","東京9",now(),now()),
-(10,"guest5","管理者","五郎","かんりしゃ","ごろう","guest5@gmail.com","080-0234-5678","東京0",now(),now())
+(1,"user","一般","一郎","いっぱん","いちろう","user@gmail.com","080-1234-5678","東京",now(),now()),
+(2,"user2","一般","二郎","いっぱん","じろう","user2@gmail.com","080-2234-5678","東京2",now(),now()),
+(3,"user3","一般","三郎","いっぱん","さぶろう","user3@gmail.com","080-3234-5678","東京3",now(),now()),
+(4,"user4","一般","四郎","いっぱん","しろう","user4@gmail.com","080-4234-5678","東京4",now(),now()),
+(5,"user5","一般","五郎","いっぱん","ごろう","user5@gmail.com","080-5234-5678","東京5",now(),now()),
+(6,"admin","管理者","一郎","かんりしゃ","いちろう","admin@gmail.com","080-6234-5678","東京6",now(),now()),
+(7,"admin2","管理者","二郎","かんりしゃ","じろう","admin2@gmail.com","080-7234-5678","東京7",now(),now()),
+(8,"admin3","管理者","三郎","かんりしゃ","さぶろう","admin3@gmail.com","080-8234-5678","東京8",now(),now()),
+(9,"admin4","管理者","四郎","かんりしゃ","しろう","admin4@gmail.com","080-9234-5678","東京9",now(),now()),
+(10,"admin5","管理者","五郎","かんりしゃ","ごろう","admin5@gmail.com","080-0234-5678","東京0",now(),now())
 ;

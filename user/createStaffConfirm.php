@@ -1,8 +1,7 @@
 <?php
-$rootPath = "../";
-include($rootPath.'header.php');
-require_once($rootPath.'common/common.php');
-require_once($rootPath.'class/User.php');
+include($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/common/common.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/class/User.php');
 
 $post = sanitize($_POST);
 
@@ -27,12 +26,12 @@ $loginUser = $user->getUser($user_id, $password);
 
 <head>
   <meta charset="UTF-8">
-  <title>スタッフ登録内容確認</title>
+  <title>管理者登録内容確認</title>
 </head>
 
 <body>
 
-  <h1>スタッフ登録内容確認</h1>
+  <h1>管理者登録内容確認</h1>
 
   <?php if ($user_id == '') : $flg = false ?>
   ユーザーIDが入力されていません。<br /><br />
@@ -138,7 +137,7 @@ $loginUser = $user->getUser($user_id, $password);
     $_SESSION['sex'] = $sex;
     $_SESSION['email'] = $email;
   ?>
-  <form method="post" action="createStaffComplete.php">
+  <form method="post" action=/index/OriginalECSitePHP/user/createStaffComplete.php>
     <input type="submit" value="ＯＫ">
     <input type="button" onclick="history.back()" value="修正"><br />
 

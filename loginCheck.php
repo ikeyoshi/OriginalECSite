@@ -1,34 +1,31 @@
 <?php
-$rootPath = "";
-include($rootPath.'header.php');
-require_once($rootPath.'common/common.php');
-require_once($rootPath.'common/ConnectDB.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/common/common.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/common/ConnectDB.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/class/User.php');
 
 try {
-    $post=sanitize($_POST);
+    $post = sanitize($_POST);
     $user_id = $post['user_id'];
     $password = $post['password'];
 
-    $dbh = new ConnectDB();
-    $sql = 'SELECT user_id,family_name,first_name,status FROM user_info WHERE user_id=? AND password=?';
-    $args[] = $user_id;
-    $args[] = $password;
-    $stmt = $dbh->exec($sql, $args);
-    $dbh = null;
+    $user = new User();
+    $loginUser = $user->existUser($user_id, $password);
 
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if ($user == false) {
+    if ($loginUser == false) {
+        include($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/header.php');
         echo 'ユーザーIDかパスワードが間違っています。<br />';
         echo '<input type="button" onclick="history.back()" value="戻る">';
     } else {
         session_start();
+        session_regenerate_id(true);
         $_SESSION['login_flg'] = 1;
-        $_SESSION['user_id'] = $user['user_id'];
-        $_SESSION['login_family_name'] = $user['family_name'];
-        $_SESSION['login_first_name'] = $user['first_name'];
-        $_SESSION['status'] = $user['status'];
-        header('Location:topPage.php');
+        $_SESSION['login_id'] = $loginUser['id'];
+        $_SESSION['login_user_id'] = $loginUser['user_id'];
+        $_SESSION['login_family_name'] = $loginUser['family_name'];
+        $_SESSION['login_first_name'] = $loginUser['first_name'];
+        $_SESSION['status'] = $loginUser['status'];
+        $_SESSION['temp_user_id'] = null;
+        header('Location:/index/OriginalECSitePHP/topPage.php');
         exit();
     }
 } catch (Exception $e) {

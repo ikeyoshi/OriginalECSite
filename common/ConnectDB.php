@@ -21,7 +21,7 @@ class ConnectDB
         return $pdo;
     }
 
-    //SELECT文
+    //SELECT文(引数無し)
     public function select($sql)
     {
         $tmp = $this->pdo();
@@ -29,7 +29,7 @@ class ConnectDB
         return $stmt;
     }
 
-    //INSERT,UPDATE,DELETE文
+    //SELECT(引数有り),INSERT,UPDATE,DELETE文
     public function exec($sql, $args)
     {
         $tmp = $this->pdo();
