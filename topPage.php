@@ -14,9 +14,7 @@ include($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/header.php');
 
   <h1>トップページ</h1>
 
-  <a href=/index/OriginalECSitePHP/product/productList.php>商品一覧を見る</a>
-  <br /><br />
-  <a href=/index/OriginalECSitePHP/user/cart.php>カートを見る</a>
+  <a href=/index/OriginalECSitePHP/message.php>管理人へメッセージを送る</a>
 
 </body>
 

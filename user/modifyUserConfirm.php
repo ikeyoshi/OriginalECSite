@@ -1,11 +1,9 @@
 <?php
 include($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/header.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/common/common.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/class/User.php');
 
 $post = sanitize($_POST);
 
-$user_id = $post['user_id'];
 $password = $post['password'];
 $password2 = $post['password2'];
 $family_name = $post['family_name'];
@@ -16,9 +14,6 @@ $sex = $post['sex'];
 $email = $post['email'];
 
 $flg = true;
-
-$user = new User();
-$loginUser = $user->getUser($user_id, $password);
 ?>
 
 <!DOCTYPE html>
@@ -26,26 +21,12 @@ $loginUser = $user->getUser($user_id, $password);
 
 <head>
   <meta charset="UTF-8">
-  <title>管理者登録内容確認</title>
+  <title>お客様登録内容確認</title>
 </head>
 
 <body>
 
-  <h1>管理者登録内容確認</h1>
-
-  <?php if ($user_id == '') : $flg = false ?>
-  ユーザーIDが入力されていません<br /><br />
-
-  <?php elseif ($loginUser) : $flg = false ?>
-  そのユーザーIDは既に登録済みです<br /><br />
-
-  <?php else : ?>
-  ユーザーID<br />
-  <?php echo $user_id ?>
-  <br /><br />
-
-  <?php endif ?>
-
+  <h1>お客様登録内容確認</h1>
 
   <?php if ($password == '' && $password2 == '') : $flg = false ?>
   パスワードを両方入力してください<br /><br />
@@ -128,7 +109,6 @@ $loginUser = $user->getUser($user_id, $password);
 
 
   <?php if ($flg == true) :
-    $_SESSION['user_id'] = $user_id;
     $_SESSION['password'] = $password;
     $_SESSION['family_name'] = $family_name;
     $_SESSION['first_name'] = $first_name;
@@ -137,7 +117,7 @@ $loginUser = $user->getUser($user_id, $password);
     $_SESSION['sex'] = $sex;
     $_SESSION['email'] = $email;
   ?>
-  <form method="post" action=/index/OriginalECSitePHP/user/createStaffComplete.php>
+  <form method="post" action="/index/OriginalECSitePHP/user/modifyUserComplete.php">
     <input type="submit" value="ＯＫ">
     <input type="button" onclick="history.back()" value="修正"><br />
   </form>

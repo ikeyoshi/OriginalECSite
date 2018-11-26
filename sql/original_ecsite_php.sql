@@ -150,5 +150,14 @@ insert into destination_info values
 (7,"admin2","管理者","二郎","かんりしゃ","じろう","admin2@gmail.com","080-7234-5678","東京7",now(),now()),
 (8,"admin3","管理者","三郎","かんりしゃ","さぶろう","admin3@gmail.com","080-8234-5678","東京8",now(),now()),
 (9,"admin4","管理者","四郎","かんりしゃ","しろう","admin4@gmail.com","080-9234-5678","東京9",now(),now()),
-(10,"admin5","管理者","五郎","かんりしゃ","ごろう","admin5@gmail.com","080-0234-5678","東京0",now(),now())
+(10,"admin5","管理者","五郎","かんりしゃ","ごろう","admin5@gmail.com","080-0234-5678","東京10",now(),now())
+;
+
+create table message_info(
+id int primary key not null auto_increment,
+name varchar(16) not null,
+message varchar(1000) not null,
+regist_date datetime not null
+)
+default charset=utf8
 ;

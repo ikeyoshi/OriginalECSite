@@ -7,31 +7,26 @@ include($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/header.php');
 
 <head>
   <meta charset="UTF-8">
-  <title>管理者登録</title>
+  <title>宛先追加</title>
 </head>
 
 <body>
 
-  <h1>管理者登録</h1>
+  <h1>宛先追加</h1>
 
-  管理者情報を入力してください<br />
+  宛先を入力してください<br />
   <br />
-  <form method="post" action="/index/OriginalECSitePHP/user/createStaffConfirm.php">
-    ユーザーID<br />
-    <input type="text" name="user_id" style="width:200px"><br />
-    パスワード<br />
-    <input type="text" name="password" style="width:200px"><br />
-    パスワードをもう一度入力してください<br />
-    <input type="text" name="password2" style="width:200px"><br />
+  <form method="post" action="/index/OriginalECSitePHP/destination/addDestinationConfirm.php">
     お名前<br />
     <input type="text" name="family_name" style="width:100px"> <input type="text" name="first_name" style="width:100px"><br />
     お名前(かな)<br />
     <input type="text" name="family_name_kana" style="width:100px"> <input type="text" name="first_name_kana" style="width:100px"><br />
-    性別<br />
-    <input type="radio" name="sex" value="0" checked>男性<br />
-    <input type="radio" name="sex" value="1">女性<br />
     メールアドレス (例 : email@abc.com)<br />
     <input type="text" name="email" style="width:200px"><br />
+    電話番号<br />
+    <input type="text" name="tel_number1" style="width:50px">-<input type="text" name="tel_number2" style="width:50px">-<input type="text" name="tel_number3" style="width:50px"><br />
+    住所<br />
+    <input type="text" name="user_address" style="width:200px"><br />
     <br />
 
     <input type="submit" value="ＯＫ">

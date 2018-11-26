@@ -9,7 +9,7 @@ class MCategory
     protected $category_description;
     protected $regist_date;
     protected $update_date;
-
+    // 商品カテゴリーのリストを取得
     public function getMCategoryList()
     {
         try {

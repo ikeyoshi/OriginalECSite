@@ -9,7 +9,7 @@ class ConnectDB
     const USER = 'root';
     const PASSWORD = 'mysql';
 
-    //データベースに接続
+    // データベースに接続
     public function pdo()
     {
         $dsn = 'mysql:dbname='.self::DBNAME.';host='.self::HOST.';charset='.self::CHARSET;
@@ -21,7 +21,7 @@ class ConnectDB
         return $pdo;
     }
 
-    //SELECT文(引数無し)
+    // SQL文(引数無し)
     public function select($sql)
     {
         $tmp = $this->pdo();
@@ -29,7 +29,7 @@ class ConnectDB
         return $stmt;
     }
 
-    //SELECT(引数有り),INSERT,UPDATE,DELETE文
+    // SQL文(引数有り)
     public function exec($sql, $args)
     {
         $tmp = $this->pdo();

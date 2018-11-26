@@ -20,7 +20,7 @@ unset($mCategoryList[0]);
 
   <h1>商品登録</h1>
 
-  商品情報を入力してください。<br />
+  商品情報を入力してください<br />
   <br />
   <form method="post" action="/index/OriginalECSitePHP/product/registProductConfirm.php" enctype="multipart/form-data">
     商品ID<br />
@@ -32,7 +32,7 @@ unset($mCategoryList[0]);
     商品説明<br />
     <input type="text" name="product_description" style="width:200px"><br />
     カテゴリー<br />
-    <select name="category_id" style="width:200px">
+    <select name="category_id" >
       <?php foreach ($mCategoryList as $mCategory2) : ?>
         <option value="<?php echo $mCategory2['category_id'] ?>"><?php echo $mCategory2['category_description'] ?></option>
       <?php endforeach ?>

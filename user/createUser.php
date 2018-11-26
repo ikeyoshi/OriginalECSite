@@ -1,6 +1,5 @@
 <?php
 include($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/header.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/common/common.php');
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +14,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/common/common.p
 
   <h1>お客様登録</h1>
 
-  お客様情報を入力してください。<br />
+  お客様情報を入力してください<br />
   <br />
   <form method="post" action="/index/OriginalECSitePHP/user/createUserConfirm.php">
     ユーザーID<br />

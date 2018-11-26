@@ -47,7 +47,7 @@ $registProductNameKana = $product->existProductNameKana($product_name_kana);
   <?php elseif ($product_id <= 0) : $flg = false ?>
   商品IDは0より大きい必要があります<br /><br />
 
-  <?php elseif ($registProductId) : $flg = false ?>
+<?php elseif ($registProductId && $product_id!=$_SESSION['product_id']) : $flg = false ?>
   その商品IDは既に登録済みです<br /><br />
 
   <?php else : ?>
@@ -61,7 +61,7 @@ $registProductNameKana = $product->existProductNameKana($product_name_kana);
   <?php if ($product_name == '') : $flg = false ?>
   商品名が入力されていません<br /><br />
 
-  <?php elseif ($registProductName) : $flg = false ?>
+  <?php elseif ($registProductName && $product_name!=$_SESSION['product_name']) : $flg = false ?>
   その商品名は既に登録済みです<br /><br />
 
   <?php else : ?>
@@ -75,7 +75,7 @@ $registProductNameKana = $product->existProductNameKana($product_name_kana);
   <?php if ($product_name_kana == '') : $flg = false ?>
   商品名(かな)が入力されていません<br /><br />
 
-  <?php elseif ($registProductNameKana) : $flg = false ?>
+  <?php elseif ($registProductNameKana && $product_name_kana!=$_SESSION['product_name_kana']) : $flg = false ?>
   その商品名(かな)は既に登録済みです<br /><br />
 
   <?php else : ?>
@@ -202,7 +202,7 @@ $registProductNameKana = $product->existProductNameKana($product_name_kana);
     $_SESSION['release_date'] = date_format($date, 'Y-m-d H:i:s');
     $_SESSION['release_company'] = $release_company;
   ?>
-  <form method="post" action=/index/OriginalECSitePHP/product/registProductComplete.php> <input type="submit" value="ＯＫ">
+  <form method="post" action=/index/OriginalECSitePHP/product/modifyProductComplete.php> <input type="submit" value="ＯＫ">
     <input type="button" onclick="history.back()" value="修正"><br />
   </form>
 

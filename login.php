@@ -14,7 +14,7 @@ include($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/header.php');
 
   <h1>ログイン</h1>
 
-  ユーザーIDとパスワードを入力してください。<br />
+  ユーザーIDとパスワードを入力してください<br />
   <br />
   <form method="post" action="/index/OriginalECSitePHP/loginCheck.php">
     ユーザーID<br />

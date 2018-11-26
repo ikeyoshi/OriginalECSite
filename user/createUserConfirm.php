@@ -34,10 +34,10 @@ $loginUser = $user->getUser($user_id, $password);
   <h1>お客様登録内容確認</h1>
 
   <?php if ($user_id == '') : $flg = false ?>
-  ユーザーIDが入力されていません。<br /><br />
+  ユーザーIDが入力されていません<br /><br />
 
   <?php elseif ($loginUser) : $flg = false ?>
-  そのユーザーIDは既に登録済みです。<br /><br />
+  そのユーザーIDは既に登録済みです<br /><br />
 
   <?php else : ?>
   ユーザーID<br />
@@ -48,10 +48,10 @@ $loginUser = $user->getUser($user_id, $password);
 
 
   <?php if ($password == '' && $password2 == '') : $flg = false ?>
-  パスワードを両方入力してください。<br /><br />
+  パスワードを両方入力してください<br /><br />
 
   <?php elseif ($password != $password2) : $flg = false ?>
-  パスワードを正しく入力してください。<br /><br />
+  パスワードを正しく入力してください<br /><br />
 
   <?php else : ?>
   パスワード<br />
@@ -62,7 +62,7 @@ $loginUser = $user->getUser($user_id, $password);
 
 
   <?php if ($family_name == '') : $flg = false ?>
-  お名前(姓)が入力されていません。<br /><br />
+  お名前(姓)が入力されていません<br /><br />
 
   <?php else : ?>
   お名前(姓)<br />
@@ -73,7 +73,7 @@ $loginUser = $user->getUser($user_id, $password);
 
 
   <?php if ($first_name == '') : $flg = false ?>
-  お名前(名)が入力されていません。<br /><br />
+  お名前(名)が入力されていません<br /><br />
 
   <?php else : ?>
   お名前(名)<br />
@@ -84,7 +84,7 @@ $loginUser = $user->getUser($user_id, $password);
 
 
   <?php if ($family_name_kana == '') : $flg = false ?>
-  お名前(かな)(姓)が入力されていません。<br /><br />
+  お名前(かな)(姓)が入力されていません<br /><br />
 
   <?php else : ?>
   お名前(かな)(姓)<br />
@@ -95,7 +95,7 @@ $loginUser = $user->getUser($user_id, $password);
 
 
   <?php if ($first_name_kana == '') : $flg = false ?>
-  お名前(かな)(名)が入力されていません。<br /><br />
+  お名前(かな)(名)が入力されていません<br /><br />
 
   <?php else : ?>
   お名前(かな)(名)<br />
@@ -118,7 +118,7 @@ $loginUser = $user->getUser($user_id, $password);
 
 
   <?php if (preg_match('/\A[\w\-\.]+\@[\w\-\.]+\.([a-z]+)\z/', $email) == 0) : $flg = false ?>
-  メールアドレスを正確に入力してください。<br /><br />
+  メールアドレスを正確に入力してください<br /><br />
 
   <?php else : ?>
   メールアドレス<br />
@@ -140,11 +140,12 @@ $loginUser = $user->getUser($user_id, $password);
   <form method="post" action="/index/OriginalECSitePHP/user/createUserComplete.php">
     <input type="submit" value="ＯＫ">
     <input type="button" onclick="history.back()" value="修正"><br />
+  </form>
 
-    <?php else : ?>
-    <input type="button" onclick="history.back()" value="修正"><br />
+  <?php else : ?>
+  <input type="button" onclick="history.back()" value="修正"><br />
 
-    <?php endif ?>
+  <?php endif ?>
 
 </body>
 

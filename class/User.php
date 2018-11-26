@@ -16,8 +16,7 @@ class User
     protected $logined;
     protected $regist_date;
     protected $update_date;
-
-
+    // 特定のユーザー情報を取得
     public function getUser($id)
     {
         try {
@@ -35,7 +34,7 @@ class User
             exit();
         }
     }
-
+    // 特定のユーザーが存在するかチェック
     public function existUser($user_id, $password)
     {
         try {
@@ -54,7 +53,7 @@ class User
             exit();
         }
     }
-
+    // 全てのユーザー情報を取得
     public function getAllUser()
     {
         try {
@@ -71,12 +70,13 @@ class User
             exit();
         }
     }
-
+    // ユーザー情報を登録
     public function createUser($user_id, $password, $family_name, $first_name, $family_name_kana, $first_name_kana, $sex, $email, $status)
     {
         try {
             $dbh = new ConnectDB();
-            $sql = 'INSERT INTO user_info (user_id, password, family_name, first_name, family_name_kana, first_name_kana, sex, email, status, logined, regist_date, update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 0, now(), now())';
+            $sql = 'INSERT INTO user_info (user_id, password, family_name, first_name, family_name_kana, first_name_kana, sex, email, status, logined, regist_date, update_date)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 0, now(), now())';
             $args[] = $user_id;
             $args[] = $password;
             $args[] = $family_name;
@@ -90,6 +90,48 @@ class User
             $dbh = null;
 
             return $stmt;
+        } catch (Exception $e) {
+            echo 'ただいま障害により大変ご迷惑をお掛けしております。';
+            exit();
+        }
+    }
+    // ユーザー情報を修正
+    public function modifyUser($user_id, $password, $family_name, $first_name, $family_name_kana, $first_name_kana, $sex, $email, $status)
+    {
+        try {
+            $dbh = new ConnectDB();
+            $sql = 'UPDATE user_info set password=?, family_name=?, first_name=?, family_name_kana=?, first_name_kana=?, sex=?, email=?, status=?, update_date=now()
+                    WHERE user_id=?';
+            $args[] = $password;
+            $args[] = $family_name;
+            $args[] = $first_name;
+            $args[] = $family_name_kana;
+            $args[] = $first_name_kana;
+            $args[] = $sex;
+            $args[] = $email;
+            $args[] = $status;
+            $args[] = $user_id;
+            $stmt = $dbh->exec($sql, $args);
+            $dbh = null;
+
+            return $stmt;
+        } catch (Exception $e) {
+            echo 'ただいま障害により大変ご迷惑をお掛けしております。';
+            exit();
+        }
+    }
+    // ユーザーを削除
+    public function deleteUser($user_id)
+    {
+        try {
+            $dbh = new ConnectDB();
+            $count = 0;
+            $sql = "DELETE FROM user_info WHERE user_id=?";
+            $args[] = $user_id;
+            $count = $dbh->exec($sql, $args);
+            $dbh = null;
+
+            return $count;
         } catch (Exception $e) {
             echo 'ただいま障害により大変ご迷惑をお掛けしております。';
             exit();

@@ -1,13 +1,23 @@
 <?php
 include($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/common/common.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/class/MCategory.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/class/Product.php');
+
+$post = sanitize($_POST);
+
+$keywordsList = explode(" ", str_replace("　", " ", trim($post['keywordsList'])));
+$category_id = $post['category_id'];
 
 $mCategory = new MCategory();
 $mCategoryList = $mCategory->getMCategoryList();
 
 $product = new Product();
-$products = $product->getAllProduct();
+if ($category_id == 1) {
+    $products = $product->searchProduct($keywordsList);
+} else {
+    $products = $product->searchProductByCategoryId($keywordsList, $category_id);
+}
 ?>
 
 <!DOCTYPE html>
@@ -15,24 +25,32 @@ $products = $product->getAllProduct();
 
 <head>
   <meta charset="UTF-8">
-  <title>商品一覧</title>
+  <title>検索結果</title>
 </head>
 
 <body>
 
-  <h1>商品一覧</h1>
+  <h1>検索結果</h1>
 
   商品検索<br />
   <form method="post" action="/index/OriginalECSitePHP/product/searchProduct.php">
-    <input type="text" name="keywordsList" style="width:200px">
+    <input type="text" name="keywordsList" value="<?php echo $post['keywordsList'] ?>" style="width:200px">
     <select name="category_id">
-      <?php foreach ($mCategoryList as $mCategory2) : ?>
-        <option value="<?php echo $mCategory2['category_id'] ?>"><?php echo $mCategory2['category_description'] ?></option>
+      <?php foreach ($mCategoryList as $mCategory2) : if ($mCategory2['category_id'] == $category_id) : ?>
+      <option value="<?php echo $mCategory2['category_id'] ?>" selected>
+        <?php echo $mCategory2['category_description'] ?>
+      </option>
+      <?php else : ?>
+      <option value="<?php echo $mCategory2['category_id'] ?>">
+        <?php echo $mCategory2['category_description'] ?>
+      </option>
+      <?php endif ?>
       <?php endforeach ?>
     </select>
     <input type="submit" value="検索">
   </form>
 
+  <?php if (count($products)) : ?>
   <table border="1">
     <tr>
       <td>商品名</td>
@@ -48,8 +66,8 @@ $products = $product->getAllProduct();
       </td>
       <td>
         <a href="/index/OriginalECSitePHP/product/productDetail.php?product_id=<?php echo $product['product_id'] ?>">
-        <?php echo $product['product_name_kana'] ?>
-      </a>
+          <?php echo $product['product_name_kana'] ?>
+        </a>
       </td>
       <td>
         <a href="/index/OriginalECSitePHP/product/productDetail.php?product_id=<?php echo $product['product_id'] ?>">
@@ -59,6 +77,11 @@ $products = $product->getAllProduct();
     </tr>
     <?php endforeach ?>
   </table>
+
+  <?php else : ?>
+  該当する商品はありません<br />
+
+  <?php endif ?>
 
 </body>
 

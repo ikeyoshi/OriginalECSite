@@ -1,6 +1,5 @@
 <?php
 include($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/header.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/common/common.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/class/Product.php');
 
 $product = new Product();
@@ -17,9 +16,7 @@ $product->registProduct($_SESSION['product_id'], $_SESSION['product_name'], $_SE
 
 <body>
 
-  商品登録が完了しました。<br />
-  <br />
-  <a href=/index/OriginalECSitePHP/topPage.php>トップページへ</a>
+  <h1>商品登録が完了しました</h1>
 
 </body>
 

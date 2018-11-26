@@ -1,7 +1,10 @@
 <?php
 include($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/header.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/common/common.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/class/MCategory.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/index/OriginalECSitePHP/class/Product.php');
+
+$mCategory = new MCategory();
+$mCategoryList = $mCategory->getMCategoryList();
 
 $product = new Product();
 $selectedProduct = $product->getProduct($_GET['product_id']);
@@ -23,9 +26,11 @@ $selectedProduct = $product->getProduct($_GET['product_id']);
     <tr>
       <td>商品名</td>
       <td>商品名(かな)</td>
-      <td>価格</td>
       <td>商品説明</td>
+      <td>カテゴリー</td>
+      <td>価格</td>
       <td>発売日</td>
+      <td>発売会社</td>
       <td>商品画像</td>
     </tr>
     <tr>
@@ -36,13 +41,19 @@ $selectedProduct = $product->getProduct($_GET['product_id']);
         <?php echo $selectedProduct['product_name_kana'] ?>
       </td>
       <td>
-        <?php echo $selectedProduct['price'] ?>円
-      </td>
-      <td>
         <?php echo $selectedProduct['product_description'] ?>
       </td>
       <td>
+        <?php echo $mCategoryList[$selectedProduct['category_id']-1]['category_name'] ?>
+      </td>
+      <td>
+        <?php echo $selectedProduct['price'] ?>円
+      </td>
+      <td>
         <?php echo $selectedProduct['release_date'] ?>
+      </td>
+      <td>
+        <?php echo $selectedProduct['release_company'] ?>
       </td>
       <td>
         <?php if ($selectedProduct['image_file_name'] == '') : ?>
@@ -55,7 +66,7 @@ $selectedProduct = $product->getProduct($_GET['product_id']);
   </table>
   <br /><br />
 
-  <form method="post" action="/index/OriginalECSitePHP/user/addCart.php">
+  <form method="post" action="/index/OriginalECSitePHP/cart/addCart.php">
     <input type="hidden" name="product_id" value="<?php echo $_GET['product_id'] ?>">
     購入個数<br />
     <select name="product_count" style="width:200px">
@@ -67,9 +78,21 @@ $selectedProduct = $product->getProduct($_GET['product_id']);
     </select>
     <input type="hidden" name="price" value="<?php echo $selectedProduct['price'] ?>">
     <input type="submit" value="カートに入れる"><br /><br />
-  </form>
 
-  <a href=/index/OriginalECSitePHP/product/productList.php>商品一覧へ戻る </a> <br />
+    <?php if (isset($_SESSION['status']) && $_SESSION['status'] == 1) : ?>
+    <input type="hidden" name="id" value="<?php echo $selectedProduct['id'] ?>">
+    <input type="hidden" name="product_name" value="<?php echo $selectedProduct['product_name'] ?>">
+    <input type="hidden" name="product_name_kana" value="<?php echo $selectedProduct['product_name_kana'] ?>">
+    <input type="hidden" name="product_description" value="<?php echo $selectedProduct['product_description'] ?>">
+    <input type="hidden" name="category_id" value="<?php echo $selectedProduct['category_id'] ?>">
+    <input type="hidden" name="price" value="<?php echo $selectedProduct['price'] ?>">
+    <input type="hidden" name="release_date" value="<?php echo $selectedProduct['release_date'] ?>">
+    <input type="hidden" name="release_company" value="<?php echo $selectedProduct['release_company'] ?>">
+    <input type="hidden" name="image_file_name" value="<?php echo $selectedProduct['image_file_name'] ?>">
+    <input type="submit" value="商品情報を変更する" formaction="/index/OriginalECSitePHP/product/modifyProduct.php"><br /><br />
+    <input type="submit" value="商品を削除する" formaction="/index/OriginalECSitePHP/product/deleteProductConfirm.php">
+    <?php endif ?>
+  </form>
 
 </body>
 

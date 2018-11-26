@@ -11,7 +11,7 @@ class Cart
     protected $price;
     protected $regist_date;
     protected $update_date;
-    // ログインユーザーのカートに入っている商品情報を取得
+    // カートに入っている商品情報を取得
     public function getCart($current_user_id)
     {
         try {
@@ -46,12 +46,13 @@ class Cart
             $dbh = new ConnectDB();
             $sql = "SELECT sum(product_count*price) as total_price
                     FROM cart_info WHERE user_id=? group by user_id";
+            $args[] = $current_user_id;
             $stmt = $dbh->exec($sql, $args);
             $dbh = null;
 
             $totalPrice = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            return $totalPrice;
+            return $totalPrice['total_price'];
         } catch (Exception $e) {
             echo 'ただいま障害により大変ご迷惑をお掛けしております。';
             exit();
